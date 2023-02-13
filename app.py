@@ -16,7 +16,7 @@ def home():
 
 @app.route('/predict_api', methods=['POST'])
 def predict_api():
-    data_as_dic=request.json['data']
+    data_as_dic=request.get_json()
     data_as_array = np.array(list(data_as_dic.values())).reshape(1,-1)
     print('Data shape:', data_as_array.shape)
     data_sc=scaler.transform(data_as_array)
