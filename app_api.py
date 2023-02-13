@@ -10,8 +10,8 @@ app = Flask('lifeexp')
 model = pickle.load( open('model_fromscratch.pkl', 'rb') )
 scaler = pickle.load( open('scaling.pkl', 'rb') )
 
-@app.route('/predict', methods=['POST'])
-def predict():
+@app.route('/predict_api', methods=['POST'])
+def predict_api():
     data_as_dic=request.get_json()
     data_as_array = np.array(list(data_as_dic.values())).reshape(1,-1)
     print('Data shape:', data_as_array.shape)
